@@ -1,0 +1,45 @@
+name: brick_breaker_reverse
+description: A creative and fast-paced 2D pixel-art game built for webOS hackathon
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.1.5 <4.0.0'
+
+dependencies:
+  auto_size_text: ^3.0.0
+  flame: ^1.15.0
+  flame_audio: ^2.1.8
+  flame_tiled: ^1.18.4
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter 
+  flutter_svg: ^2.0.10+1
+  intl: ^0.18.1
+  provider: ^6.1.2
+  shared_preferences: ^2.2.3
+  url_launcher: ^6.2.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - assets/images/
+    - assets/tiles/
+    - assets/audio/
+
+  fonts:
+    - family: Sabo-Filled
+      fonts:
+        - asset: assets/fonts/Sabo-Filled.otf
+    
+    - family: Sabo-Regular
+      fonts:
+        - asset: assets/fonts/Sabo-Regular.otf      
