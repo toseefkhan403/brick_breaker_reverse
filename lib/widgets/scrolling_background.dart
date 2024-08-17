@@ -1,6 +1,12 @@
-import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
+
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+
+import 'package:brick_breaker_reverse/providers/game_progress_provider.dart';
+import 'package:brick_breaker_reverse/widgets/dancing_text.dart';
+import 'package:brick_breaker_reverse/widgets/utils/colors.dart';
 
 class ScrollingBackground extends StatefulWidget {
   const ScrollingBackground({super.key});
@@ -54,10 +60,24 @@ class _ScrollingBackgroundState extends State<ScrollingBackground>
                   _controller.value,
                   _image!,
                 ),
-                child: Container(),
+                child: _scoreWidget(),
               );
             },
           );
+  }
+
+  _scoreWidget() {
+    final provider = context.watch<GameProgressProvider>();
+    return Center(
+      child: DancingText(
+          child: Text(
+        '${provider.score}',
+        style: TextStyle(
+          fontSize: MediaQuery.of(context).size.width * 0.1,
+          color: red.withOpacity(0.8),
+        ),
+      )),
+    );
   }
 }
 

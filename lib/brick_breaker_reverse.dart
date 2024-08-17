@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:brick_breaker_reverse/components/borders.dart';
 import 'package:brick_breaker_reverse/components/player.dart';
+import 'package:brick_breaker_reverse/widgets/utils/colors.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
@@ -30,7 +31,7 @@ class BrickBreakerReverse extends FlameGame
   final borders = Borders(left: 0, right: 0, ground: 0, ceiling: 0);
 
   @override
-  Color backgroundColor() => const Color(0xFF9fcc98);
+  Color backgroundColor() => green;
 
   @override
   FutureOr<void> onLoad() async {

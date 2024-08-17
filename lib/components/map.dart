@@ -4,9 +4,12 @@ import 'dart:math';
 import 'package:brick_breaker_reverse/brick_breaker_reverse.dart';
 import 'package:brick_breaker_reverse/components/ball.dart';
 import 'package:brick_breaker_reverse/components/border_block.dart';
+import 'package:brick_breaker_reverse/components/level_config.dart';
 import 'package:brick_breaker_reverse/components/player.dart';
+import 'package:brick_breaker_reverse/providers/game_progress_provider.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
+import 'package:provider/provider.dart';
 
 class Map extends World with HasGameRef<BrickBreakerReverse>, HasDecorator {
   Map({required this.name});
@@ -97,19 +100,24 @@ class Map extends World with HasGameRef<BrickBreakerReverse>, HasDecorator {
   }
 
   void _addBalls() {
+    final currentLevel =
+        gameRef.buildContext?.read<GameProgressProvider>().currentLevel;
+
     final leftPoint = game.borders.left + 64 * 2;
     final rightPoint = game.borders.right - 64 * 2;
     final spawnXPoint =
         leftPoint + (Random().nextDouble() * (rightPoint - leftPoint));
 
-    // ball spawning algorithm here - should move faster and more often as time increases
     final ball = Ball(
         position: Vector2(spawnXPoint, game.borders.ceiling - 64 * 1),
         size: Vector2.all(64 * 2),
         horizontalDirection: DateTime.now().millisecond % 2 == 0 ? 1 : -1,
-        moveSpeed: 300);
+        moveSpeed: currentLevel?.moveSpeed ?? level1.moveSpeed);
     add(ball);
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(
+        Duration(
+            milliseconds: currentLevel?.intervalMilliseconds ??
+                level1.intervalMilliseconds), () {
       _addBalls();
     });
   }

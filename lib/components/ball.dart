@@ -2,9 +2,11 @@ import 'dart:async';
 
 import 'package:brick_breaker_reverse/brick_breaker_reverse.dart';
 import 'package:brick_breaker_reverse/components/player.dart';
+import 'package:brick_breaker_reverse/providers/game_progress_provider.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/foundation.dart';
+import 'package:provider/provider.dart';
 
 enum BallStates { red, green, explode }
 
@@ -28,6 +30,7 @@ class Ball extends SpriteAnimationGroupComponent
   void onCollisionStart(
       Set<Vector2> intersectionPoints, PositionComponent other) {
     if (other is Player) {
+      final provider = gameRef.buildContext?.read<GameProgressProvider>();
       final playerBottom =
           other.position.y + other.size.y - other.verticalOffset;
 
@@ -36,6 +39,7 @@ class Ball extends SpriteAnimationGroupComponent
         other.playerJump();
         Future.delayed(const Duration(milliseconds: 300), () {
           removeFromParent();
+          provider?.incrementScore();
         });
       } else {
         other.playerDead();

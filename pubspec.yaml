@@ -19,6 +19,7 @@ dependencies:
   intl: ^0.18.1
   provider: ^6.1.2
   shared_preferences: ^2.2.3
+  toastification: ^2.0.0
   url_launcher: ^6.2.4
 
 dev_dependencies:
@@ -33,6 +34,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/brick/
+    - assets/images/brick_vfx/
     - assets/images/background/
     - assets/images/ball/
     - assets/tiles/
