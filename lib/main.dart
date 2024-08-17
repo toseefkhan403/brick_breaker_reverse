@@ -1,4 +1,5 @@
 import 'package:brick_breaker_reverse/brick_breaker_reverse.dart';
+import 'package:brick_breaker_reverse/widgets/scrolling_background.dart';
 import 'package:brick_breaker_reverse/widgets/start_screen_overlay.dart';
 import 'package:flutter/material.dart';
 import 'package:flame/flame.dart';
@@ -7,8 +8,8 @@ import 'package:flame/game.dart';
 
 // brick breaker reverse - deadline 26 Aug - 11 days left - lead with linux
 // 12-13 - music, setting up the canvas
-// 14-15 - intro animation and bg graphics and assets
-// 16-17-18 - actual gameplay - brick movements, ball randomizer, hitboxes, dodging and score
+// 14-15-16 - add assets, actual gameplay - brick movements, ball randomizer, hitboxes, dodging and score
+// 17-18 - intro animation and bg graphics
 // 19-20 - starting menu(stats, credits, settings), pause menu, animations, lose condition and restart screen
 // 21-22 - skins, finishing touches, responsiveness, rush mode(with a timer) and release
 void main() async {
@@ -39,6 +40,7 @@ class MainApp extends StatelessWidget {
                     "Loading...",
                     style: TextStyle(color: Colors.white, fontSize: 24),
                   )),
+              backgroundBuilder: (_) => const ScrollingBackground(),
               overlayBuilderMap: {
                 PlayState.startScreen.name:
                     (context, BrickBreakerReverse game) =>

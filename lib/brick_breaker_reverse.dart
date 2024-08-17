@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
+import 'package:flutter/material.dart';
 import 'components/map.dart';
+import 'package:flame_audio/flame_audio.dart';
 
 enum PlayState {
   startScreen,
@@ -19,19 +21,32 @@ class BrickBreakerReverse extends FlameGame
   late CameraComponent cam;
   late Map currentMap;
 
-  PlayState playState = PlayState.startScreen;
+  PlayState playState = PlayState.playing;
+  bool playSounds = false;
+  double volume = 1.0;
 
-  // @override
-  // Color backgroundColor() => Colors.black;
+  @override
+  Color backgroundColor() => const Color(0xFF9fcc98);
 
   @override
   FutureOr<void> onLoad() async {
     await images.loadAllImages();
     loadMap(
-      mapName: 'game_map',
+      mapName: 'gameMap',
     );
+    startBgmMusic();
 
     return super.onLoad();
+  }
+
+  void startBgmMusic() {
+    FlameAudio.bgm.initialize();
+    // FlameAudio.audioCache.loadAll(
+    //     ['click.wav', 'teleport.wav', 'typing.mp3', 'typing_devil.mp3']);
+    if (playSounds) {
+      FlameAudio.bgm
+          .play('Three Red Hearts - Pixel War 2.ogg', volume: volume * 0.5);
+    }
   }
 
   void loadMap({required String mapName}) {
@@ -42,11 +57,12 @@ class BrickBreakerReverse extends FlameGame
 
     // this line makes it responsive! aspect ratio 16:9 - 32x32 in 640x360
     cam = CameraComponent.withFixedResolution(
-        world: currentMap,
-        width: 640,
-        height: 360);
+        world: currentMap, width: 1920, height: 1080);
     cam.viewfinder.anchor = Anchor.topLeft;
 
-    addAll([cam, currentMap]);
+    addAll([
+      cam,
+      currentMap,
+    ]);
   }
 }

@@ -32,6 +32,8 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/brick/
+    - assets/images/background/
     - assets/tiles/
     - assets/audio/
 
