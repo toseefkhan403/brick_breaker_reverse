@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="120" height="68" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="2">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="120" height="68" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="6">
  <tileset firstgid="1" source="Terrain (16x16).tsx"/>
  <layer id="1" name="background" width="120" height="68">
   <data encoding="csv">
@@ -74,6 +74,12 @@
 </data>
  </layer>
  <objectgroup id="2" name="spawnPoints">
-  <object id="1" name="player" type="player" x="928.333" y="876" width="64" height="64"/>
+  <object id="1" name="player" type="player" x="926" y="731.333" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup id="3" name="borders">
+  <object id="2" name="leftBorder" type="leftBorder" x="335" y="158" width="1" height="800"/>
+  <object id="3" name="rightBorder" type="rightBorder" x="1584" y="160" width="1" height="800"/>
+  <object id="4" name="ground" type="ground" x="322.333" y="944" width="1277.58" height="1"/>
+  <object id="5" name="ceiling" type="ceiling" x="321" y="175" width="1279.08" height="1"/>
  </objectgroup>
 </map>

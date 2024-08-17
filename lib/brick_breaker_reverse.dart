@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:brick_breaker_reverse/components/borders.dart';
+import 'package:brick_breaker_reverse/components/player.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
@@ -17,13 +19,15 @@ enum PlayState {
 }
 
 class BrickBreakerReverse extends FlameGame
-    with HasKeyboardHandlerComponents, HasCollisionDetection {
+    with HasKeyboardHandlerComponents, HasCollisionDetection, TapCallbacks {
   late CameraComponent cam;
   late Map currentMap;
 
   PlayState playState = PlayState.playing;
+  Player player = Player();
   bool playSounds = false;
   double volume = 1.0;
+  final borders = Borders(left: 0, right: 0, ground: 0, ceiling: 0);
 
   @override
   Color backgroundColor() => const Color(0xFF9fcc98);
@@ -64,5 +68,11 @@ class BrickBreakerReverse extends FlameGame
       cam,
       currentMap,
     ]);
+  }
+
+  @override
+  void onTapDown(TapDownEvent event) {
+    player.startJump();
+    super.onTapDown(event);
   }
 }
