@@ -1,0 +1,10 @@
+{
+  "@@locale": "ko",
+  "gameTitle": "벽돌 깨기",
+  "gameSubTitle": "리버스",
+  "play": "재생",
+  "soundsOn": "사운드 켜기",
+  "soundsOff": "사운드 끄기",
+  "language": "언어",
+  "about": "정보"
+}

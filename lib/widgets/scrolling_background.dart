@@ -33,7 +33,7 @@ class _ScrollingBackgroundState extends State<ScrollingBackground>
 
   Future<void> _loadImage() async {
     final ByteData data =
-        await rootBundle.load('assets/images/background/green.png');
+        await rootBundle.load('assets/images/background/Green.png');
     final Uint8List bytes = data.buffer.asUint8List();
     final ui.Codec codec = await ui.instantiateImageCodec(bytes);
     final ui.FrameInfo frameInfo = await codec.getNextFrame();
@@ -68,16 +68,18 @@ class _ScrollingBackgroundState extends State<ScrollingBackground>
 
   _scoreWidget() {
     final provider = context.watch<GameProgressProvider>();
-    return Center(
-      child: DancingText(
-          child: Text(
-        '${provider.score}',
-        style: TextStyle(
-          fontSize: MediaQuery.of(context).size.width * 0.1,
-          color: red.withOpacity(0.8),
-        ),
-      )),
-    );
+    return provider.score == 0
+        ? Container()
+        : Center(
+            child: DancingText(
+                child: Text(
+              '${provider.score}',
+              style: TextStyle(
+                fontSize: MediaQuery.of(context).size.width * 0.1,
+                color: red.withOpacity(0.8),
+              ),
+            )),
+          );
   }
 }
 

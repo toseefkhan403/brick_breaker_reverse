@@ -1,6 +1,13 @@
 {
-  "helloWorld": "Hello World!",
-  "@helloWorld": {
-    "description": "The conventional newborn programmer greeting"
-  }
+  "@@locale": "en",
+  "gameTitle": "Brick Breaker",
+  "gameSubTitle": "Reverse",
+  "play": "Play",
+  "soundsOn": "Sounds On",
+  "soundsOff": "Sounds Off",
+  "language": "Language",
+  "about": "About",
+  "developedBy" : "Developed by ",
+  "musicCredits" : "Music credits to ",
+  "exit" : "Exit"
 }

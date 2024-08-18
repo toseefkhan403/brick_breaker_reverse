@@ -1,0 +1,10 @@
+{
+  "@@locale": "es",
+  "gameTitle": "Rompe Ladrillos",
+  "gameSubTitle": "Inverso",
+  "play": "Jugar",
+  "soundsOn": "Sonido Activado",
+  "soundsOff": "Sonido Desactivado",
+  "language": "Idioma",
+  "about": "Acerca de"
+}

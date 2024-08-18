@@ -16,6 +16,7 @@ enum PlayState {
   transition,
   playing,
   pauseMenu,
+  about,
   gameOver
 }
 
@@ -24,7 +25,7 @@ class BrickBreakerReverse extends FlameGame
   late CameraComponent cam;
   late Map currentMap;
 
-  PlayState playState = PlayState.playing;
+  PlayState playState = PlayState.startScreen;
   Player player = Player();
   bool playSounds = false;
   double volume = 1.0;
@@ -36,21 +37,18 @@ class BrickBreakerReverse extends FlameGame
   @override
   FutureOr<void> onLoad() async {
     await images.loadAllImages();
-    loadMap(
-      mapName: 'gameMap',
-    );
     startBgmMusic();
+    overlays.add(PlayState.startScreen.name);
 
     return super.onLoad();
   }
 
   void startBgmMusic() {
     FlameAudio.bgm.initialize();
-    // FlameAudio.audioCache.loadAll(
-    //     ['click.wav', 'teleport.wav', 'typing.mp3', 'typing_devil.mp3']);
+    FlameAudio.audioCache.loadAll(['click.wav']);
     if (playSounds) {
       FlameAudio.bgm
-          .play('Three Red Hearts - Pixel War 2.ogg', volume: volume * 0.5);
+          .play('Three-Red-Hearts-Pixel-War-2.mp3', volume: volume * 0.5);
     }
   }
 
@@ -75,5 +73,16 @@ class BrickBreakerReverse extends FlameGame
   void onTapDown(TapDownEvent event) {
     player.startJump();
     super.onTapDown(event);
+  }
+
+  void startGame() {
+    playState = PlayState.playing;
+    loadMap(
+      mapName: 'gameMap',
+    );
+    if (playSounds) {
+      FlameAudio.bgm
+          .play('Three Red Hearts - Box Jump.ogg', volume: volume * 0.5);
+    }
   }
 }

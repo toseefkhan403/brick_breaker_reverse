@@ -1,0 +1,10 @@
+{
+  "@@locale": "fr",
+  "gameTitle": "Casse-Briques",
+  "gameSubTitle": "Inverse",
+  "play": "Jouer",
+  "soundsOn": "Son Activé",
+  "soundsOff": "Son Désactivé",
+  "language": "Langue",
+  "about": "À Propos"
+}
