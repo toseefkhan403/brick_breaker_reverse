@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:brick_breaker_reverse/brick_breaker_reverse.dart';
+import 'package:brick_breaker_reverse/components/colored_brick.dart';
 import 'package:brick_breaker_reverse/components/player.dart';
 import 'package:brick_breaker_reverse/providers/game_progress_provider.dart';
 import 'package:flame/collisions.dart';
@@ -37,7 +38,7 @@ class Ball extends SpriteAnimationGroupComponent
       if (playerBottom - intersectionPoints.first.y < 16) {
         current = BallStates.explode;
         other.playerJump();
-        Future.delayed(const Duration(milliseconds: 300), () {
+        animationTicker?.completed.then((_) {
           removeFromParent();
           provider?.incrementScore();
         });
@@ -45,6 +46,12 @@ class Ball extends SpriteAnimationGroupComponent
         other.playerDead();
       }
     }
+
+    if (other is ColoredBrick) {
+      verticalDirection *= -1;
+      other.brickExplode();
+    }
+
     super.onCollisionStart(intersectionPoints, other);
   }
 
@@ -102,9 +109,10 @@ class Ball extends SpriteAnimationGroupComponent
       return SpriteAnimation.fromFrameData(
           game.images.fromCache('ball/Ball_explosion_final.png'),
           SpriteAnimationData.sequenced(
-            amount: 8,
+            amount: 7,
             stepTime: ballSpeed,
             textureSize: Vector2.all(64),
+            loop: false,
           ));
     }
 

@@ -36,6 +36,7 @@ flutter:
     - assets/images/
     - assets/images/brick/
     - assets/images/brick_vfx/
+    - assets/images/colored_bricks/
     - assets/images/background/
     - assets/images/ball/
     - assets/tiles/

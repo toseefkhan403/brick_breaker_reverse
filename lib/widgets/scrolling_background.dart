@@ -24,7 +24,7 @@ class _ScrollingBackgroundState extends State<ScrollingBackground>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(seconds: 5),
+      duration: const Duration(seconds: 4),
       vsync: this,
     )..repeat();
 
@@ -50,30 +50,54 @@ class _ScrollingBackgroundState extends State<ScrollingBackground>
 
   @override
   Widget build(BuildContext context) {
+    final provider = context.watch<GameProgressProvider>();
+
     return _image == null
         ? const SizedBox.shrink()
         : AnimatedBuilder(
             animation: _controller,
             builder: (context, child) {
-              return CustomPaint(
-                painter: _ScrollingBackgroundPainter(
-                  _controller.value,
-                  _image!,
-                ),
-                child: _scoreWidget(),
+              return AnimatedSwitcher(
+                duration: const Duration(seconds: 1),
+                transitionBuilder: (Widget child, Animation<double> animation) {
+                  return FadeTransition(opacity: animation, child: child);
+                },
+                child: ShaderMask(
+                    key: ValueKey<bool>(provider.shouldApplyRedColor),
+                    shaderCallback: (rect) {
+                      return provider.shouldApplyRedColor
+                          ? LinearGradient(
+                              colors: [
+                                red.withOpacity(0.6),
+                                red.withOpacity(0.5)
+                              ],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                            ).createShader(rect)
+                          : const LinearGradient(
+                              colors: [Colors.transparent, Colors.transparent],
+                            ).createShader(rect);
+                    },
+                    blendMode: BlendMode.srcATop,
+                    child: CustomPaint(
+                      painter: _ScrollingBackgroundPainter(
+                        _controller.value,
+                        _image!,
+                      ),
+                      child: _scoreWidget(provider.score),
+                    )),
               );
             },
           );
   }
 
-  _scoreWidget() {
-    final provider = context.watch<GameProgressProvider>();
-    return provider.score == 0
+  Widget _scoreWidget(int score) {
+    return score == 0
         ? Container()
         : Center(
             child: DancingText(
                 child: Text(
-              '${provider.score}',
+              '$score',
               style: TextStyle(
                 fontSize: MediaQuery.of(context).size.width * 0.1,
                 color: red.withOpacity(0.8),

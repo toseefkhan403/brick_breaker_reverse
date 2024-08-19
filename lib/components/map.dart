@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:brick_breaker_reverse/brick_breaker_reverse.dart';
 import 'package:brick_breaker_reverse/components/ball.dart';
 import 'package:brick_breaker_reverse/components/border_block.dart';
+import 'package:brick_breaker_reverse/components/colored_brick.dart';
 import 'package:brick_breaker_reverse/components/level_config.dart';
 import 'package:brick_breaker_reverse/components/player.dart';
 import 'package:brick_breaker_reverse/providers/game_progress_provider.dart';
@@ -17,13 +18,14 @@ class Map extends World with HasGameRef<BrickBreakerReverse>, HasDecorator {
   final String name;
   late TiledComponent level;
   final double scrollSpeed = 40;
+  bool spawnBalls = true;
 
   @override
   FutureOr<void> onLoad() async {
     await _loadLevel();
     _addSpawnPoints();
     _addBorders();
-    _addBalls();
+    addBalls();
     return super.onLoad();
   }
 
@@ -35,16 +37,24 @@ class Map extends World with HasGameRef<BrickBreakerReverse>, HasDecorator {
   void _addSpawnPoints() {
     final spawnPointsLayer = level.tileMap.getLayer<ObjectGroup>('spawnPoints');
     if (spawnPointsLayer == null) return;
+
+    final random = Random();
     for (final spawnPoint in spawnPointsLayer.objects) {
       switch (spawnPoint.class_) {
         case 'player':
           final player = Player(
-            position: Vector2(spawnPoint.x, spawnPoint.y + 45),
+            position: Vector2(spawnPoint.x - 108, spawnPoint.y + 200),
             size: Vector2(spawnPoint.width * 4, spawnPoint.height * 4),
           );
           game.player = player;
-          add(player);
           break;
+        case 'colored_brick':
+          final cb = ColoredBrick(
+            brick: 'colored_brick_${random.nextInt(5) + 1}',
+            position: Vector2(spawnPoint.x - 86, spawnPoint.y),
+            size: Vector2(spawnPoint.width * 4, spawnPoint.height * 4),
+          );
+          add(cb);
       }
     }
   }
@@ -99,7 +109,7 @@ class Map extends World with HasGameRef<BrickBreakerReverse>, HasDecorator {
     }
   }
 
-  void _addBalls() {
+  void addBalls() {
     final currentLevel =
         gameRef.buildContext?.read<GameProgressProvider>().currentLevel;
 
@@ -118,7 +128,9 @@ class Map extends World with HasGameRef<BrickBreakerReverse>, HasDecorator {
         Duration(
             milliseconds: currentLevel?.intervalMilliseconds ??
                 level1.intervalMilliseconds), () {
-      _addBalls();
+      if (spawnBalls) {
+        addBalls();
+      }
     });
   }
 }

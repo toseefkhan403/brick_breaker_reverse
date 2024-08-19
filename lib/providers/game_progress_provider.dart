@@ -7,6 +7,19 @@ import 'package:brick_breaker_reverse/widgets/utils/colors.dart';
 class GameProgressProvider extends ChangeNotifier {
   int score = 0;
   LevelConfig currentLevel = level1;
+  bool shouldApplyRedColor = false;
+
+  void switchRevengeMode() {
+    shouldApplyRedColor = !shouldApplyRedColor;
+    notifyListeners();
+  }
+
+  void resetProgress() {
+    score = 0;
+    currentLevel = level1;
+    shouldApplyRedColor = false;
+    notifyListeners();
+  }
 
   void incrementScore() {
     score++;

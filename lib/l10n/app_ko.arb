@@ -6,5 +6,14 @@
   "soundsOn": "사운드 켜기",
   "soundsOff": "사운드 끄기",
   "language": "언어",
-  "about": "정보"
+  "about": "정보",
+  "developedBy": "개발자: ",
+  "musicCredits": "음악 크레딧: ",
+  "exit": "종료",
+  "introMessage1": "수십 년 동안, 벽돌은 반복적으로 부서지며 계속해서 충격을 받아왔습니다.",
+  "introMessage2": "하지만 우리가 벽돌의 시각을 생각해본 적이 있습니까? 만약 그들이 꿈, 두려움, 그리고 생존하려는 욕망이 있다면?",
+  "introMessage3": "벽돌의 입장이라면 어떻게 하겠습니까? 싸우겠습니까, 아니면 운명을 받아들이겠습니까?",
+  "introMessage4": "어디에...",
+  "introMessage5": "내 친구들은 다 어디 갔지?",
+  "introMessage6": "쓰러진 형제들의 복수를 해야 해!"
 }

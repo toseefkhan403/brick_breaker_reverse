@@ -30,7 +30,7 @@ playClickSound(BrickBreakerReverse game) async {
 Widget gradientText(String text) => ShaderMask(
       shaderCallback: (Rect bounds) {
         return const LinearGradient(
-          colors: [red, Colors.black],
+          colors: [red, Colors.black87],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ).createShader(bounds);
@@ -41,7 +41,7 @@ Widget gradientText(String text) => ShaderMask(
         minFontSize: 30,
         style: const TextStyle(
             height: 0.74,
-            fontSize: 80,
+            fontSize: 100,
             fontWeight: FontWeight.bold,
             color: Colors.white),
       ),

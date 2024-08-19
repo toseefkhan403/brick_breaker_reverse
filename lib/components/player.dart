@@ -5,7 +5,7 @@ import 'package:flame/components.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
-enum PlayerState { alive, running, jumping, doubleJumping, dead }
+enum PlayerState { anticipation, alive, running, jumping, doubleJumping, dead }
 
 class Player extends SpriteAnimationGroupComponent
     with HasGameRef<BrickBreakerReverse>, KeyboardHandler {
@@ -142,7 +142,7 @@ class Player extends SpriteAnimationGroupComponent
           current == PlayerState.doubleJumping) {
         current = PlayerState.alive;
       } else if (current == PlayerState.alive) {
-        Future.delayed(const Duration(milliseconds: 500), () {
+        animationTicker?.completed.then((_) {
           current = PlayerState.running;
         });
       }
@@ -155,6 +155,7 @@ class Player extends SpriteAnimationGroupComponent
 
   void _loadAnims() {
     animations = {
+      PlayerState.anticipation: getPlayerAnim(PlayerState.anticipation),
       PlayerState.alive: getPlayerAnim(PlayerState.alive),
       PlayerState.running: getPlayerAnim(PlayerState.running),
       PlayerState.jumping: getPlayerAnim(PlayerState.jumping),
@@ -162,16 +163,30 @@ class Player extends SpriteAnimationGroupComponent
       PlayerState.dead: getPlayerAnim(PlayerState.dead),
     };
 
-    current = PlayerState.alive;
+    current = PlayerState.anticipation;
+    Future.delayed(const Duration(seconds: 3), () {
+      current = PlayerState.alive;
+    });
   }
 
   getPlayerAnim(PlayerState state) {
     switch (state) {
+      case PlayerState.anticipation:
+        return SpriteAnimation.fromFrameData(
+            game.images.fromCache('brick/brick_alive_antecipation.png'),
+            SpriteAnimationData.sequenced(
+              amount: 9,
+              textureSize: Vector2.all(64),
+              stepTime: stepTime,
+            ));
       case PlayerState.alive:
         return SpriteAnimation.fromFrameData(
             game.images.fromCache('brick/brick_alive_turn_vertical.png'),
             SpriteAnimationData.sequenced(
-                amount: 7, textureSize: Vector2.all(64), stepTime: stepTime));
+                amount: 7,
+                textureSize: Vector2.all(64),
+                stepTime: stepTime,
+                loop: false));
       case PlayerState.running:
         return SpriteAnimation.fromFrameData(
             game.images.fromCache('brick/brick_alive_walk.png'),

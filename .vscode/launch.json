@@ -13,6 +13,17 @@
             ],
         },
         {
+            "name": "brick_breaker_reverse (windows)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "flutterMode": "debug",
+            "args": [
+                "-d",
+                "windows"
+            ],
+        },
+        {
             "name": "brick_breaker_reverse (profile mode)",
             "request": "launch",
             "type": "dart",

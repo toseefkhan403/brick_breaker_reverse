@@ -1,7 +1,9 @@
 import 'package:brick_breaker_reverse/brick_breaker_reverse.dart';
+import 'package:brick_breaker_reverse/providers/game_progress_provider.dart';
 import 'package:brick_breaker_reverse/widgets/game_title_widget.dart';
 import 'package:brick_breaker_reverse/widgets/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class StartScreenOverlay extends StatefulWidget {
   const StartScreenOverlay({super.key, required this.game});
@@ -31,6 +33,11 @@ class _StartScreenOverlayState extends State<StartScreenOverlay>
     );
 
     _controller.forward();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<GameProgressProvider>().resetProgress();
+    });
+
     super.initState();
   }
 

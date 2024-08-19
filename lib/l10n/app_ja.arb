@@ -6,5 +6,14 @@
   "soundsOn": "サウンドオン",
   "soundsOff": "サウンドオフ",
   "language": "言語",
-  "about": "情報"
+  "about": "情報",
+  "developedBy": "開発者: ",
+  "musicCredits": "音楽のクレジット: ",
+  "exit": "終了",
+  "introMessage1": "何十年もの間、レンガは何度も壊され、次々と打撃を受けてきた。",
+  "introMessage2": "でも、レンガの視点を考えたことはありますか？もし彼らに夢や恐怖、生き延びたいという欲望があるとしたら？",
+  "introMessage3": "レンガの立場だったら、どうしますか？戦いますか、それとも運命を受け入れますか？",
+  "introMessage4": "どこへ...",
+  "introMessage5": "どこに行ったんだ、友達は？",
+  "introMessage6": "倒れた仲間たちの仇を討たなければ！"
 }
