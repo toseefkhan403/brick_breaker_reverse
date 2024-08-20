@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:brick_breaker_reverse/brick_breaker_reverse.dart';
+import 'package:brick_breaker_reverse/widgets/utils/utils.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/foundation.dart';
@@ -72,19 +73,30 @@ class Player extends SpriteAnimationGroupComponent
   }
 
   void playerJump() {
+    playSound(game, 'jump');
     velocity.y = -jumpForce;
     jump = true;
     isOnGround = false;
   }
 
   void playerDead() {
-    // todo
-    // current = PlayerState.dead;
-    // removeFromParent();
-    // game.playState = PlayState.gameOver;
+    playSound(game, 'death');
+    game.pauseEngine();
+
+    // todo display a flashbang
+    Future.delayed(const Duration(milliseconds: 1100), () {
+      game.overlays.add(PlayState.transition.name);
+      game.resumeEngine();
+      game.removeWhere(
+          (component) => component is Map || component is CameraComponent);
+      removeFromParent();
+      game.overlays.add(PlayState.gameOver.name);
+      game.playState = PlayState.gameOver;
+    });
   }
 
   void _playerDoubleJump() {
+    playSound(game, 'jump');
     velocity.y = -jumpForce * 0.8; // Reduced force for double jump
     doubleJump = true;
   }
@@ -206,7 +218,10 @@ class Player extends SpriteAnimationGroupComponent
         return SpriteAnimation.fromFrameData(
             game.images.fromCache('brick/brick_dead.png'),
             SpriteAnimationData.sequenced(
-                amount: 13, textureSize: Vector2.all(64), stepTime: stepTime));
+                amount: 13,
+                textureSize: Vector2.all(64),
+                stepTime: stepTime,
+                loop: false));
     }
   }
 

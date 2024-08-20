@@ -1,5 +1,6 @@
 import 'package:brick_breaker_reverse/brick_breaker_reverse.dart';
 import 'package:brick_breaker_reverse/overlays/about_overlay.dart';
+import 'package:brick_breaker_reverse/overlays/game_over_overlay.dart';
 import 'package:brick_breaker_reverse/overlays/intro_dialog_overlay.dart';
 import 'package:brick_breaker_reverse/overlays/intro_dialog_overlay_2.dart';
 import 'package:brick_breaker_reverse/overlays/start_menu_overlay.dart';
@@ -21,7 +22,8 @@ import 'package:toastification/toastification.dart';
 // 17-18 - intro animation, transition animation and bg graphics, complete game flow - done
 // 19-20 - starting menu(stats, credits, settings), pause menu, animations, lose condition and restart screen
 // 21-22 - skins, finishing touches, responsiveness, rush mode(with a timer) and release
-// localize toasts, fix ball and border hitboxes, hide above ceiling area, add death animation and overlay, restart, pause menu, webOS stuff
+// add death animation and overlay, restart menu - done
+// bug fixes: fix ball and border hitboxes, hide above ceiling area, pause menu, webOS stuff
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Flame.device.fullScreen();
@@ -51,11 +53,16 @@ class MainApp extends StatelessWidget {
             resizeToAvoidBottomInset: false,
             body: GameWidget(
               game: BrickBreakerReverse(),
-              loadingBuilder: (_) => const Center(
-                  child: Text(
-                "Loading...",
-                style: TextStyle(color: Colors.white, fontSize: 24),
-              )),
+              loadingBuilder: (_) => Builder(builder: (context) {
+                final local =
+                    context.read<LocaleProvider>().currentLocalization();
+
+                return Center(
+                    child: Text(
+                  local.loading,
+                  style: const TextStyle(color: Colors.white, fontSize: 24),
+                ));
+              }),
               backgroundBuilder: (_) => const ScrollingBackground(),
               overlayBuilderMap: {
                 PlayState.startScreen.name:
@@ -77,7 +84,7 @@ class MainApp extends StatelessWidget {
                 PlayState.about.name: (context, BrickBreakerReverse game) =>
                     AboutOverlay(game: game),
                 PlayState.gameOver.name: (context, BrickBreakerReverse game) =>
-                    StartScreenOverlay(game: game),
+                    GameOverOverlay(game: game),
               },
             ),
           ),

@@ -15,5 +15,11 @@
   "introMessage3" : "What would you do in the brick's place? Would you fight back, or accept your fate?",
   "introMessage4" : "Where...",
   "introMessage5" : "Where did all my friends go?",
-  "introMessage6" : "I must avenge my fallen brothers!"
+  "introMessage6" : "I must avenge my fallen brothers!",
+  "gameOver": "Game Over",
+  "score": "Score",
+  "restart": "Restart",
+  "tutorialMsg": "Jump over the balls to destroy them",
+  "loading": "Loading...",
+  "levelUpMsg": "Level Up!!!\nBall speed and frequency increased!"
 }

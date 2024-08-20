@@ -67,7 +67,7 @@ class _IntroDialogOverlay2State extends State<IntroDialogOverlay2>
             child: AnimatedTextKit(
               animatedTexts: getAnimatedTextBasedOnEcoMeter(),
               displayFullTextOnTap: true,
-              pause: const Duration(seconds: 3),
+              pause: const Duration(seconds: 2),
               isRepeatingAnimation: false,
               stopPauseOnTap: true,
               onNextBeforePause: (i, isLast) {
@@ -133,12 +133,14 @@ class _IntroDialogOverlay2State extends State<IntroDialogOverlay2>
   }
 
   void showJumpInfoToast() {
+    final local = context.read<LocaleProvider>().currentLocalization();
+
     toastification.show(
       type: ToastificationType.info,
       style: ToastificationStyle.flatColored,
-      title: const Text(
-        "Jump over the balls to destroy them",
-        style: TextStyle(color: Colors.white),
+      title: Text(
+        local.tutorialMsg,
+        style: const TextStyle(color: Colors.white),
       ),
       icon: const Icon(
         Icons.warning_amber_rounded,

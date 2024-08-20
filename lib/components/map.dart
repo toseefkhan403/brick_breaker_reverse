@@ -49,12 +49,14 @@ class Map extends World with HasGameRef<BrickBreakerReverse>, HasDecorator {
           game.player = player;
           break;
         case 'colored_brick':
+          if (!game.addColoredBricks) break;
           final cb = ColoredBrick(
             brick: 'colored_brick_${random.nextInt(5) + 1}',
             position: Vector2(spawnPoint.x - 86, spawnPoint.y),
             size: Vector2(spawnPoint.width * 4, spawnPoint.height * 4),
           );
           add(cb);
+          break;
       }
     }
   }

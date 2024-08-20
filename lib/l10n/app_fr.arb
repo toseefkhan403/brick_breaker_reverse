@@ -15,5 +15,11 @@
   "introMessage3": "Que feriez-vous à la place de la brique ? Vous battre ou accepter votre destin ?",
   "introMessage4": "Où...",
   "introMessage5": "Où sont passés tous mes amis ?",
-  "introMessage6": "Je dois venger mes frères tombés !"
+  "introMessage6": "Je dois venger mes frères tombés !",
+  "gameOver": "Fin de Partie",
+  "score": "Score",
+  "restart": "Redémarrer",
+  "tutorialMsg": "Sautez par-dessus les balles pour les détruire",
+  "loading": "Chargement...",
+  "levelUpMsg": "Niveau Supérieur !!!\nLa vitesse et la fréquence des balles ont augmenté !"
 }

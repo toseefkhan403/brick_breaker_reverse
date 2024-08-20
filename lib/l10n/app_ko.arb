@@ -15,5 +15,11 @@
   "introMessage3": "벽돌의 입장이라면 어떻게 하겠습니까? 싸우겠습니까, 아니면 운명을 받아들이겠습니까?",
   "introMessage4": "어디에...",
   "introMessage5": "내 친구들은 다 어디 갔지?",
-  "introMessage6": "쓰러진 형제들의 복수를 해야 해!"
+  "introMessage6": "쓰러진 형제들의 복수를 해야 해!",
+  "gameOver": "게임 오버",
+  "score": "점수",
+  "restart": "재시작",
+  "tutorialMsg": "공을 뛰어넘어 파괴하세요",
+  "loading": "로딩 중...",
+  "levelUpMsg": "레벨 업!!!\n공의 속도와 빈도가 증가했습니다!"
 }

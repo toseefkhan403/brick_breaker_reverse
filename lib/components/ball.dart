@@ -35,12 +35,13 @@ class Ball extends SpriteAnimationGroupComponent
       final playerBottom =
           other.position.y + other.size.y - other.verticalOffset;
 
-      if (playerBottom - intersectionPoints.first.y < 16) {
+      if (playerBottom - intersectionPoints.first.y < 25) {
         current = BallStates.explode;
+        // playSound(game, 'powerUp');
         other.playerJump();
+        provider?.incrementScore();
         animationTicker?.completed.then((_) {
           removeFromParent();
-          provider?.incrementScore();
         });
       } else {
         other.playerDead();

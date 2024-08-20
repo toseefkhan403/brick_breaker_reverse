@@ -32,8 +32,10 @@ class BrickBreakerReverse extends FlameGame
   double volume = 1.0;
   final borders = Borders(left: 0, right: 0, ground: 0, ceiling: 0);
 
+  bool addColoredBricks = true;
+
   @override
-  Color backgroundColor() => const Color(0xFFb18266);
+  Color backgroundColor() => const Color(0xFFb18266).withOpacity(0.9);
 
   @override
   FutureOr<void> onLoad() async {

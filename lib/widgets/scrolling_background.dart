@@ -1,5 +1,7 @@
 import 'dart:ui' as ui;
 
+import 'package:brick_breaker_reverse/providers/locale_provider.dart';
+import 'package:brick_breaker_reverse/widgets/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -51,6 +53,10 @@ class _ScrollingBackgroundState extends State<ScrollingBackground>
   @override
   Widget build(BuildContext context) {
     final provider = context.watch<GameProgressProvider>();
+    final local = context.read<LocaleProvider>().currentLocalization();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      showLevelUpToast(provider.score, local);
+    });
 
     return _image == null
         ? const SizedBox.shrink()
