@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:brick_breaker_reverse/brick_breaker_reverse.dart';
+import 'package:brick_breaker_reverse/components/border_block.dart';
 import 'package:brick_breaker_reverse/components/colored_brick.dart';
 import 'package:brick_breaker_reverse/components/player.dart';
 import 'package:brick_breaker_reverse/providers/game_progress_provider.dart';
@@ -53,6 +54,24 @@ class Ball extends SpriteAnimationGroupComponent
       other.brickExplode();
     }
 
+    if (other is BorderBlock) {
+      final borders = game.borders;
+      final ground = borders.ground;
+      final ceiling = borders.ceiling + 5;
+
+      final yPoint = intersectionPoints.first.y;
+
+      if (yPoint < ceiling) {
+        removeFromParent();
+      }
+
+      if (yPoint < ground && yPoint > ceiling) {
+        horizontalDirection *= -1;
+      } else {
+        verticalDirection *= -1;
+      }
+    }
+
     super.onCollisionStart(intersectionPoints, other);
   }
 
@@ -79,30 +98,8 @@ class Ball extends SpriteAnimationGroupComponent
   }
 
   void _launch(double dt) {
-    final borders = game.borders;
-    final leftBorder = borders.left - horizontalOffset;
-    final rightBorder = borders.right + horizontalOffset;
-    final ground = borders.ground + verticalOffset;
-    final ceiling = borders.ceiling;
-
     position.y += verticalDirection * moveSpeed * dt;
     position.x += horizontalDirection * moveSpeed * dt;
-
-    // Check if the ball hits the left or right border and reverse direction
-    if (position.x <= leftBorder || position.x + size.x >= rightBorder) {
-      horizontalDirection *= -1;
-    }
-
-    if (position.y + size.y >= ground) {
-      verticalDirection *= -1;
-    }
-
-    if (position.y + size.y <= ceiling ||
-        position.x + 16 < leftBorder ||
-        position.x + 16 > rightBorder ||
-        position.y + 16 > ground) {
-      removeFromParent();
-    }
   }
 
   _getBallAnims(BallStates state) {

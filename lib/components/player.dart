@@ -1,15 +1,22 @@
 import 'dart:async';
 import 'package:brick_breaker_reverse/brick_breaker_reverse.dart';
+import 'package:brick_breaker_reverse/components/border_block.dart';
 import 'package:brick_breaker_reverse/widgets/utils/utils.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame/events.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 enum PlayerState { anticipation, alive, running, jumping, doubleJumping, dead }
 
 class Player extends SpriteAnimationGroupComponent
-    with HasGameRef<BrickBreakerReverse>, KeyboardHandler {
+    with
+        HasGameRef<BrickBreakerReverse>,
+        KeyboardHandler,
+        CollisionCallbacks,
+        PointerMoveCallbacks,
+        TapCallbacks {
   Player({super.position, super.size});
 
   final double stepTime = 0.10;
@@ -72,6 +79,22 @@ class Player extends SpriteAnimationGroupComponent
     return super.onKeyEvent(event, keysPressed);
   }
 
+  @override
+  void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
+    if (other is BorderBlock) {
+      // can check for the other borders here as well
+      final borders = game.borders;
+      final ceiling = borders.ceiling + 5;
+
+      final yPoint = intersectionPoints.first.y;
+
+      if (yPoint < ceiling) {
+        velocity.y = jumpForce;
+      }
+    }
+    super.onCollision(intersectionPoints, other);
+  }
+
   void playerJump() {
     playSound(game, 'jump');
     velocity.y = -jumpForce;
@@ -83,7 +106,6 @@ class Player extends SpriteAnimationGroupComponent
     playSound(game, 'death');
     game.pauseEngine();
 
-    // todo display a flashbang
     Future.delayed(const Duration(milliseconds: 1100), () {
       game.overlays.add(PlayState.transition.name);
       game.resumeEngine();
@@ -243,4 +265,30 @@ class Player extends SpriteAnimationGroupComponent
       _playerDoubleJump();
     }
   }
+
+  @override
+  void onPointerMove(event) {
+    if (current == PlayerState.anticipation) return;
+
+    final mousePosition = event.canvasPosition.x;
+
+    final newX = mousePosition - horizontalOffset;
+    double leftBorder = game.borders.left - horizontalOffset;
+    double rightBorder = game.borders.right - horizontalOffset - 42;
+
+    if (newX > leftBorder && newX < rightBorder) {
+      position.x = newX;
+    }
+
+    super.onPointerMove(event);
+  }
+
+  @override
+  void onTapDown(TapDownEvent event) {
+    startJump();
+    super.onTapDown(event);
+  }
+
+  @override
+  bool containsLocalPoint(Vector2 point) => true;
 }

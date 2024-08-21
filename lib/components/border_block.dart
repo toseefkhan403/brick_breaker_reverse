@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/foundation.dart';
 
@@ -12,4 +15,10 @@ class BorderBlock extends PositionComponent {
   }
 
   final BorderType borderType;
+
+  @override
+  FutureOr<void> onLoad() {
+    add(RectangleHitbox());
+    return super.onLoad();
+  }
 }

@@ -121,7 +121,7 @@ class Map extends World with HasGameRef<BrickBreakerReverse>, HasDecorator {
         leftPoint + (Random().nextDouble() * (rightPoint - leftPoint));
 
     final ball = Ball(
-        position: Vector2(spawnXPoint, game.borders.ceiling - 64 * 1),
+        position: Vector2(spawnXPoint, game.borders.ceiling - 40),
         size: Vector2.all(64 * 2),
         horizontalDirection: DateTime.now().millisecond % 2 == 0 ? 1 : -1,
         moveSpeed: currentLevel?.moveSpeed ?? level1.moveSpeed);

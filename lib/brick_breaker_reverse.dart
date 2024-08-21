@@ -2,9 +2,11 @@ import 'dart:async';
 
 import 'package:brick_breaker_reverse/components/borders.dart';
 import 'package:brick_breaker_reverse/components/player.dart';
+import 'package:brick_breaker_reverse/widgets/utils/colors.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'components/map.dart';
 import 'package:flame_audio/flame_audio.dart';
@@ -22,7 +24,7 @@ enum PlayState {
 }
 
 class BrickBreakerReverse extends FlameGame
-    with HasKeyboardHandlerComponents, HasCollisionDetection, TapCallbacks {
+    with HasKeyboardHandlerComponents, HasCollisionDetection {
   late CameraComponent cam;
   late Map currentMap;
 
@@ -35,15 +37,21 @@ class BrickBreakerReverse extends FlameGame
   bool addColoredBricks = true;
 
   @override
-  Color backgroundColor() => const Color(0xFFb18266).withOpacity(0.9);
+  Color backgroundColor() => bgColor;
 
   @override
   FutureOr<void> onLoad() async {
     await images.loadAllImages();
-    startBgmMusic();
 
+    // for testing
     // startGame();
-    overlays.add(PlayState.startScreen.name);
+
+    if (kIsWeb) {
+      overlays.add('tapToStart');
+    } else {
+      overlays.add(PlayState.startScreen.name);
+      startBgmMusic();
+    }
 
     return super.onLoad();
   }
@@ -87,11 +95,5 @@ class BrickBreakerReverse extends FlameGame
         overlays.add(PlayState.intro.name);
       });
     });
-  }
-
-  @override
-  void onTapDown(TapDownEvent event) {
-    player.startJump();
-    super.onTapDown(event);
   }
 }

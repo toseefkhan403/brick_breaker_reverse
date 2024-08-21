@@ -4,6 +4,7 @@ import 'package:brick_breaker_reverse/overlays/game_over_overlay.dart';
 import 'package:brick_breaker_reverse/overlays/intro_dialog_overlay.dart';
 import 'package:brick_breaker_reverse/overlays/intro_dialog_overlay_2.dart';
 import 'package:brick_breaker_reverse/overlays/start_menu_overlay.dart';
+import 'package:brick_breaker_reverse/overlays/tap_to_start_overlay.dart';
 import 'package:brick_breaker_reverse/overlays/transition_overlay.dart';
 import 'package:brick_breaker_reverse/providers/game_progress_provider.dart';
 import 'package:brick_breaker_reverse/providers/locale_provider.dart';
@@ -23,7 +24,9 @@ import 'package:toastification/toastification.dart';
 // 19-20 - starting menu(stats, credits, settings), pause menu, animations, lose condition and restart screen
 // 21-22 - skins, finishing touches, responsiveness, rush mode(with a timer) and release
 // add death animation and overlay, restart menu - done
-// bug fixes: fix ball and border hitboxes, hide above ceiling area, pause menu, webOS stuff
+// bug fixes: fix ball and border hitboxes, hide above ceiling area, mouse follow controls - done
+// additional features:  pause menu, add paddleboard, add favicon and icon, video, streaks should give extra points, high scores, tap to play screen for web
+// webOS config
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Flame.device.fullScreen();
@@ -77,14 +80,16 @@ class MainApp extends StatelessWidget {
                     IntroDialogOverlay(game: game),
                 PlayState.intro2.name: (context, BrickBreakerReverse game) =>
                     IntroDialogOverlay2(game: game),
-                PlayState.playing.name: (context, BrickBreakerReverse game) =>
-                    StartScreenOverlay(game: game),
-                PlayState.pauseMenu.name: (context, BrickBreakerReverse game) =>
-                    StartScreenOverlay(game: game),
+                // PlayState.playing.name: (context, BrickBreakerReverse game) =>
+                //     PauseButtonOverlay(game: game),
+                // PlayState.pauseMenu.name: (context, BrickBreakerReverse game) =>
+                //     PauseScreenOverlay(game: game),
                 PlayState.about.name: (context, BrickBreakerReverse game) =>
                     AboutOverlay(game: game),
                 PlayState.gameOver.name: (context, BrickBreakerReverse game) =>
                     GameOverOverlay(game: game),
+                'tapToStart': (context, BrickBreakerReverse game) =>
+                    TapToStartOverlay(game: game),
               },
             ),
           ),
