@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="120" height="68" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="286">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="120" height="68" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="287">
  <tileset firstgid="1" source="Terrain (16x16).tsx"/>
  <tileset firstgid="243" source="colored_bricks.tsx"/>
  <layer id="1" name="background" width="120" height="68">
@@ -117,6 +117,7 @@
   <object id="268" name="colored_brick" type="colored_brick" x="424" y="616" width="64" height="64"/>
   <object id="272" name="colored_brick" type="colored_brick" x="1432" y="616" width="64" height="64"/>
   <object id="273" name="colored_brick" type="colored_brick" x="1504" y="616" width="64" height="64"/>
+  <object id="286" name="paddleboard" type="paddleboard" x="928" y="176" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="3" name="borders">
   <object id="2" name="leftBorder" type="leftBorder" x="335" y="158" width="1" height="800"/>

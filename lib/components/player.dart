@@ -268,6 +268,7 @@ class Player extends SpriteAnimationGroupComponent
 
   @override
   void onPointerMove(event) {
+    if (game.size.x < 1720 || game.size.y < 600) return;
     if (current == PlayerState.anticipation) return;
 
     final mousePosition = event.canvasPosition.x;

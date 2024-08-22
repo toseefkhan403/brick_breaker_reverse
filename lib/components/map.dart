@@ -6,6 +6,7 @@ import 'package:brick_breaker_reverse/components/ball.dart';
 import 'package:brick_breaker_reverse/components/border_block.dart';
 import 'package:brick_breaker_reverse/components/colored_brick.dart';
 import 'package:brick_breaker_reverse/components/level_config.dart';
+import 'package:brick_breaker_reverse/components/paddleboard.dart';
 import 'package:brick_breaker_reverse/components/player.dart';
 import 'package:brick_breaker_reverse/providers/game_progress_provider.dart';
 import 'package:flame/components.dart';
@@ -56,6 +57,14 @@ class Map extends World with HasGameRef<BrickBreakerReverse>, HasDecorator {
             size: Vector2(spawnPoint.width * 4, spawnPoint.height * 4),
           );
           add(cb);
+          break;
+        case 'paddleboard':
+          if (!game.addColoredBricks) break;
+          final pb = Paddleboard(
+            position: Vector2(spawnPoint.x - 86, spawnPoint.y - 116),
+            size: Vector2(spawnPoint.width * 4, spawnPoint.height * 4),
+          );
+          add(pb);
           break;
       }
     }

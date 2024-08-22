@@ -18,7 +18,6 @@ enum PlayState {
   intro,
   intro2,
   playing,
-  pauseMenu,
   about,
   gameOver
 }

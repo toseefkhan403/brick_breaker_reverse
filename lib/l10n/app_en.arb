@@ -21,5 +21,8 @@
   "restart": "Restart",
   "tutorialMsg": "Jump over the balls to destroy them",
   "loading": "Loading...",
-  "levelUpMsg": "Level Up!!!\nBall speed and frequency increased!"
+  "levelUpMsg": "Level Up!!!\nBall speed and frequency increased!",
+  "highScore": "High Score",
+  "pause": "Pause",
+  "resume": "Resume"
 }

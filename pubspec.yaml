@@ -1,10 +1,11 @@
 name: brick_breaker_reverse
-description: A creative and fast-paced 2D pixel-art game built for webOS hackathon
+description: A creative and fast-paced 2D pixel-art game built with Flutter and Flame
 publish_to: 'none'
 version: 0.1.0
 
 environment:
   sdk: '>=3.1.5 <4.0.0'
+  flutter: 3.13.9
 
 dependencies:
   animated_text_kit: ^4.2.2
@@ -19,14 +20,32 @@ dependencies:
   flutter_svg: ^2.0.10+1
   intl: ^0.18.1
   provider: ^6.1.2
-  shared_preferences: ^2.2.3
   toastification: ^2.0.0
   url_launcher: ^6.2.4
+  shared_preferences: ^2.2.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/app_icon.png"
+  web:
+    generate: true
+    image_path: "assets/images/app_icon.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+  windows:
+    generate: true
+    image_path: "assets/images/app_icon.png"
+    icon_size: 48
+  macos:
+    generate: true
+    image_path: "assets/images/app_icon.png"
 
 flutter:
   uses-material-design: true
@@ -39,6 +58,7 @@ flutter:
     - assets/images/colored_bricks/
     - assets/images/background/
     - assets/images/ball/
+    - assets/images/paddleboard/
     - assets/tiles/
     - assets/audio/
 

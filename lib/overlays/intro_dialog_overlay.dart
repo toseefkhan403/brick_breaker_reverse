@@ -1,6 +1,7 @@
 import 'package:brick_breaker_reverse/brick_breaker_reverse.dart';
 import 'package:brick_breaker_reverse/components/ball.dart';
 import 'package:brick_breaker_reverse/components/colored_brick.dart';
+import 'package:brick_breaker_reverse/components/paddleboard.dart';
 import 'package:brick_breaker_reverse/widgets/dialog_typewriter_animated_text.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
@@ -90,7 +91,9 @@ class _IntroDialogOverlayState extends State<IntroDialogOverlay>
                 Future.delayed(const Duration(milliseconds: 800), () {
                   widget.game.cam.viewfinder.angle = 0;
                   widget.game.currentMap.removeWhere((component) =>
-                      component is ColoredBrick || component is Ball);
+                      component is ColoredBrick ||
+                      component is Ball ||
+                      component is Paddleboard);
                   widget.game.currentMap.spawnBalls = false;
 
                   widget.game.currentMap.add(widget.game.player);

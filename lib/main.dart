@@ -24,8 +24,9 @@ import 'package:toastification/toastification.dart';
 // 19-20 - starting menu(stats, credits, settings), pause menu, animations, lose condition and restart screen
 // 21-22 - skins, finishing touches, responsiveness, rush mode(with a timer) and release
 // add death animation and overlay, restart menu - done
-// bug fixes: fix ball and border hitboxes, hide above ceiling area, mouse follow controls - done
-// additional features:  pause menu, add paddleboard, add favicon and icon, video, streaks should give extra points, high scores, tap to play screen for web
+// bug fixes: fix ball and border hitboxes, hide above ceiling area, mouse follow controls, decrease difficulty - done
+// additional features: add paddleboard, add favicon and icon, high scores, tap to play screen for web - done
+// video, streaks should give extra points
 // webOS config
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -80,10 +81,6 @@ class MainApp extends StatelessWidget {
                     IntroDialogOverlay(game: game),
                 PlayState.intro2.name: (context, BrickBreakerReverse game) =>
                     IntroDialogOverlay2(game: game),
-                // PlayState.playing.name: (context, BrickBreakerReverse game) =>
-                //     PauseButtonOverlay(game: game),
-                // PlayState.pauseMenu.name: (context, BrickBreakerReverse game) =>
-                //     PauseScreenOverlay(game: game),
                 PlayState.about.name: (context, BrickBreakerReverse game) =>
                     AboutOverlay(game: game),
                 PlayState.gameOver.name: (context, BrickBreakerReverse game) =>

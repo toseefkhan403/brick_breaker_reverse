@@ -25,6 +25,7 @@ class _GameOverOverlayState extends State<GameOverOverlay> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final provider = context.read<GameProgressProvider>();
       score = provider.score;
+      provider.updateHighScore(score);
       provider.resetProgress();
       setState(() {});
     });
@@ -35,6 +36,7 @@ class _GameOverOverlayState extends State<GameOverOverlay> {
   @override
   Widget build(BuildContext context) {
     final local = context.watch<LocaleProvider>().currentLocalization();
+    final highScore = context.watch<GameProgressProvider>().highScore;
 
     return SlideTransitionWidget(
       child: Semantics(
@@ -55,6 +57,13 @@ class _GameOverOverlayState extends State<GameOverOverlay> {
               Expanded(
                 child: AutoSizeText(
                   '${local.score}: $score',
+                  style:
+                      const TextStyle(fontSize: 50, fontFamily: 'Sabo-Regular'),
+                ),
+              ),
+              Expanded(
+                child: AutoSizeText(
+                  '${local.highScore}: $highScore',
                   style:
                       const TextStyle(fontSize: 50, fontFamily: 'Sabo-Regular'),
                 ),
