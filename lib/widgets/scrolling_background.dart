@@ -1,6 +1,7 @@
 import 'dart:ui' as ui;
 
 import 'package:brick_breaker_reverse/providers/locale_provider.dart';
+import 'package:brick_breaker_reverse/providers/streak_provider.dart';
 import 'package:brick_breaker_reverse/widgets/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -101,14 +102,31 @@ class _ScrollingBackgroundState extends State<ScrollingBackground>
     return score == 0
         ? Container()
         : Center(
-            child: DancingText(
-                child: Text(
-              '$score',
-              style: TextStyle(
-                fontSize: MediaQuery.of(context).size.width * 0.1,
-                color: red.withOpacity(0.8),
-              ),
-            )),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                DancingText(
+                    child: Text(
+                  '$score',
+                  style: TextStyle(
+                    fontSize: MediaQuery.of(context).size.width * 0.1,
+                    color: red.withOpacity(0.8),
+                  ),
+                )),
+                Consumer(builder: (context, ref, child) {
+                  final streak = context.watch<StreakProvider>().streak;
+                  return DancingText(
+                      child: Text(
+                    streak > 1 ? 'Streak: $streak' : '',
+                    style: TextStyle(
+                      fontSize: MediaQuery.of(context).size.width * 0.02,
+                      fontFamily: 'Sabo-Regular',
+                      color: red.withOpacity(0.8),
+                    ),
+                  ));
+                }),
+              ],
+            ),
           );
   }
 }

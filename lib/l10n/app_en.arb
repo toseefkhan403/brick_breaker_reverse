@@ -11,7 +11,7 @@
   "musicCredits" : "Music credits to ",
   "exit" : "Exit",
   "introMessage1" :  "For decades, bricks have been smashed over and over, taking hit after hit.",
-  "introMessage2" :  "But have we ever wondered about the bricks' perspective? What if they have dreams, fears, and a desire to survive?",
+  "introMessage2" :  "But have we ever wondered about the bricks' perspective? What if they have a desire to survive?",
   "introMessage3" : "What would you do in the brick's place? Would you fight back, or accept your fate?",
   "introMessage4" : "Where...",
   "introMessage5" : "Where did all my friends go?",
@@ -24,5 +24,6 @@
   "levelUpMsg": "Level Up!!!\nBall speed and frequency increased!",
   "highScore": "High Score",
   "pause": "Pause",
-  "resume": "Resume"
+  "resume": "Resume",
+  "highestStreak": "Highest Streak"
 }

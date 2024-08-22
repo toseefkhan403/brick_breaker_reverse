@@ -8,6 +8,7 @@ import 'package:brick_breaker_reverse/overlays/tap_to_start_overlay.dart';
 import 'package:brick_breaker_reverse/overlays/transition_overlay.dart';
 import 'package:brick_breaker_reverse/providers/game_progress_provider.dart';
 import 'package:brick_breaker_reverse/providers/locale_provider.dart';
+import 'package:brick_breaker_reverse/providers/streak_provider.dart';
 import 'package:brick_breaker_reverse/widgets/scrolling_background.dart';
 import 'package:brick_breaker_reverse/overlays/start_screen_overlay.dart';
 import 'package:flutter/material.dart';
@@ -26,8 +27,9 @@ import 'package:toastification/toastification.dart';
 // add death animation and overlay, restart menu - done
 // bug fixes: fix ball and border hitboxes, hide above ceiling area, mouse follow controls, decrease difficulty - done
 // additional features: add paddleboard, add favicon and icon, high scores, tap to play screen for web - done
-// video, streaks should give extra points
-// webOS config
+// streaks high score - done
+// bugs: paddleboard and ball glitches, player out of bounds using mouse
+// readme, video, webOS config
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Flame.device.fullScreen();
@@ -45,6 +47,7 @@ class MainApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => GameProgressProvider()),
+        ChangeNotifierProvider(create: (_) => StreakProvider()),
         ChangeNotifierProvider(create: (_) => LocaleProvider()),
       ],
       child: ToastificationWrapper(

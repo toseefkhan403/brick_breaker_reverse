@@ -2,8 +2,10 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:brick_breaker_reverse/brick_breaker_reverse.dart';
 import 'package:brick_breaker_reverse/providers/game_progress_provider.dart';
 import 'package:brick_breaker_reverse/providers/locale_provider.dart';
+import 'package:brick_breaker_reverse/providers/streak_provider.dart';
 import 'package:brick_breaker_reverse/widgets/dancing_text.dart';
 import 'package:brick_breaker_reverse/widgets/slide_transition_widget.dart';
+import 'package:brick_breaker_reverse/widgets/utils/colors.dart';
 import 'package:brick_breaker_reverse/widgets/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -37,6 +39,7 @@ class _GameOverOverlayState extends State<GameOverOverlay> {
   Widget build(BuildContext context) {
     final local = context.watch<LocaleProvider>().currentLocalization();
     final highScore = context.watch<GameProgressProvider>().highScore;
+    final highestStreak = context.watch<StreakProvider>().highestStreak;
 
     return SlideTransitionWidget(
       child: Semantics(
@@ -48,24 +51,42 @@ class _GameOverOverlayState extends State<GameOverOverlay> {
               const Spacer(),
               Expanded(
                 flex: 2,
-                child: DancingText(
-                  child: gradientText(
-                    local.gameOver.toUpperCase(),
-                  ),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: DancingText(
+                        child: gradientText(
+                          local.gameOver.toUpperCase(),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: AutoSizeText(
+                              '${local.highScore}: $highScore',
+                              style: const TextStyle(
+                                  fontSize: 40, fontFamily: 'Sabo-Regular'),
+                            ),
+                          ),
+                          Expanded(
+                            child: AutoSizeText(
+                              '${local.highestStreak}: $highestStreak',
+                              style: const TextStyle(
+                                  fontSize: 40, fontFamily: 'Sabo-Regular'),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Expanded(
                 child: AutoSizeText(
                   '${local.score}: $score',
-                  style:
-                      const TextStyle(fontSize: 50, fontFamily: 'Sabo-Regular'),
-                ),
-              ),
-              Expanded(
-                child: AutoSizeText(
-                  '${local.highScore}: $highScore',
-                  style:
-                      const TextStyle(fontSize: 50, fontFamily: 'Sabo-Regular'),
+                  style: const TextStyle(fontSize: 50, color: red),
                 ),
               ),
               textButton(local.restart, context, () => restartTheGame(context)),

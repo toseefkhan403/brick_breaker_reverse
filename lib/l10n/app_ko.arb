@@ -21,5 +21,9 @@
   "restart": "재시작",
   "tutorialMsg": "공을 뛰어넘어 파괴하세요",
   "loading": "로딩 중...",
-  "levelUpMsg": "레벨 업!!!\n공의 속도와 빈도가 증가했습니다!"
+  "levelUpMsg": "레벨 업!!!\n공의 속도와 빈도가 증가했습니다!",
+  "highScore": "최고 점수",
+  "pause": "일시 정지",
+  "resume": "다시 시작",
+  "highestStreak": "최고 연속 기록"
 }

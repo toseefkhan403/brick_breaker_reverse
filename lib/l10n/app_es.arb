@@ -21,5 +21,9 @@
   "restart": "Reiniciar",
   "tutorialMsg": "Salta sobre las bolas para destruirlas",
   "loading": "Cargando...",
-  "levelUpMsg": "¡Subida de Nivel!\n¡La velocidad y frecuencia de las bolas han aumentado!"
+  "levelUpMsg": "¡Subida de Nivel!\n¡La velocidad y frecuencia de las bolas han aumentado!",
+  "highScore": "Puntuación más alta",
+  "pause": "Pausa",
+  "resume": "Reanudar",
+  "highestStreak": "Racha más alta"
 }

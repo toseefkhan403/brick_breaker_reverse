@@ -6,6 +6,7 @@ import 'package:brick_breaker_reverse/components/colored_brick.dart';
 import 'package:brick_breaker_reverse/components/paddleboard.dart';
 import 'package:brick_breaker_reverse/components/player.dart';
 import 'package:brick_breaker_reverse/providers/game_progress_provider.dart';
+import 'package:brick_breaker_reverse/providers/streak_provider.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/foundation.dart';
@@ -34,13 +35,15 @@ class Ball extends SpriteAnimationGroupComponent
       Set<Vector2> intersectionPoints, PositionComponent other) {
     if (other is Player) {
       final provider = gameRef.buildContext?.read<GameProgressProvider>();
+      final streakProvider = gameRef.buildContext?.read<StreakProvider>();
       final playerTop = other.position.y + other.verticalOffset;
 
-      if ((playerTop - intersectionPoints.first.y).abs() < 15) {
+      if ((playerTop - intersectionPoints.first.y).abs() < 18) {
         other.playerDead();
       } else {
         current = BallStates.explode;
         // playSound(game, 'powerUp');
+        streakProvider?.incrementStreak();
         other.playerJump();
         provider?.incrementScore();
         animationTicker?.completed.then((_) {
@@ -103,6 +106,10 @@ class Ball extends SpriteAnimationGroupComponent
   void _launch(double dt) {
     position.y += verticalDirection * moveSpeed * dt;
     position.x += horizontalDirection * moveSpeed * dt;
+
+    if (position.y + 64 > game.borders.ground) {
+      removeFromParent();
+    }
   }
 
   _getBallAnims(BallStates state) {

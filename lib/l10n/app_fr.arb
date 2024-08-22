@@ -21,5 +21,9 @@
   "restart": "Redémarrer",
   "tutorialMsg": "Sautez par-dessus les balles pour les détruire",
   "loading": "Chargement...",
-  "levelUpMsg": "Niveau Supérieur !!!\nLa vitesse et la fréquence des balles ont augmenté !"
+  "levelUpMsg": "Niveau Supérieur !!!\nLa vitesse et la fréquence des balles ont augmenté !",
+  "highScore": "Meilleur score",
+  "pause": "Pause",
+  "resume": "Reprendre",
+  "highestStreak": "Meilleure série"
 }

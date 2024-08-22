@@ -1,9 +1,11 @@
 import 'dart:async';
 import 'package:brick_breaker_reverse/brick_breaker_reverse.dart';
 import 'package:brick_breaker_reverse/components/border_block.dart';
+import 'package:brick_breaker_reverse/providers/streak_provider.dart';
 import 'package:brick_breaker_reverse/widgets/utils/utils.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:provider/provider.dart';
 import 'package:flame/events.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -104,6 +106,7 @@ class Player extends SpriteAnimationGroupComponent
 
   void playerDead() {
     playSound(game, 'death');
+    gameRef.buildContext?.read<StreakProvider>().resetStreak();
     game.pauseEngine();
 
     Future.delayed(const Duration(milliseconds: 1100), () {
@@ -140,6 +143,7 @@ class Player extends SpriteAnimationGroupComponent
       isOnGround = true;
       jump = false;
       doubleJump = false;
+      gameRef.buildContext?.read<StreakProvider>().resetStreak();
     }
   }
 
@@ -270,8 +274,9 @@ class Player extends SpriteAnimationGroupComponent
   void onPointerMove(event) {
     if (game.size.x < 1720 || game.size.y < 600) return;
     if (current == PlayerState.anticipation) return;
+    if (game.playState != PlayState.playing) return;
 
-    final mousePosition = event.canvasPosition.x;
+    final mousePosition = event.devicePosition.x;
 
     final newX = mousePosition - horizontalOffset;
     double leftBorder = game.borders.left - horizontalOffset;
