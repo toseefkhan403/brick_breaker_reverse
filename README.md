@@ -1,7 +1,7 @@
 # Brick Breaker: Reverse
 The game is live! [Try it out here!](https://toseefkhan403.github.io/brick_breaker_reverse/)\
 This project is our submission for the [LG webOS Hackathon 2024](https://weboshackathon.lge.com/)\
-[Project Video](https://toseefkhan403.github.io/brick_breaker_reverse/)
+[Project Video](https://youtu.be/OzWRDKzxePI)
 
 ## Description
 Brick Breaker Reverse is a thrilling twist on the classic brick breaker game where the player embodies a brick seeking vengeance for its fallen friends. Built using Flutter and Flame, this game combines stunning retro-styled graphics with smooth, fast-paced gameplay and energetic music, providing a unique and engaging gaming experience.
@@ -22,7 +22,7 @@ Brick Breaker Reverse is a thrilling twist on the classic brick breaker game whe
 
 ## Gameplay
 - **Bounce to Break**: Instead of being the destroyer, you are the brick! Bounce on the balls to break them and earn points.
-- **Streaks and Scores**: Make streaks by jumping over multiple balls before landing, earning bonus points for skillful maneuvers.
+- **Streaks and Scores**: Make streaks by jumping over multiple balls before landing, earning bonus points for skillful manoeuvres.
 - **Double Jump**: Utilize the double jump to navigate tricky situations and keep the streak going.
 - **Energetic Experience**: Fast-paced gameplay combined with retro-styled graphics and energetic music for an immersive experience.
 
