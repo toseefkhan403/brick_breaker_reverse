@@ -106,8 +106,8 @@ class _GameOverOverlayState extends State<GameOverOverlay> {
               }),
               textButton(
                   widget.game.isMouseControl
-                      ? 'Controls: Mouse'
-                      : 'Controls: Keyboard',
+                      ? local.controlsMouse
+                      : local.controlsKeyboard,
                   context, () {
                 playClickSound(widget.game);
                 widget.game.isMouseControl = !widget.game.isMouseControl;
