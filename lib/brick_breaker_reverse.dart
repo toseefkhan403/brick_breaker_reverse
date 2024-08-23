@@ -34,6 +34,7 @@ class BrickBreakerReverse extends FlameGame
   final borders = Borders(left: 0, right: 0, ground: 0, ceiling: 0);
 
   bool addColoredBricks = true;
+  bool isMouseControl = true;
 
   @override
   Color backgroundColor() => bgColor;

@@ -7,6 +7,7 @@ import 'package:brick_breaker_reverse/widgets/dancing_text.dart';
 import 'package:brick_breaker_reverse/widgets/slide_transition_widget.dart';
 import 'package:brick_breaker_reverse/widgets/utils/colors.dart';
 import 'package:brick_breaker_reverse/widgets/utils/utils.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -90,6 +91,28 @@ class _GameOverOverlayState extends State<GameOverOverlay> {
                 ),
               ),
               textButton(local.restart, context, () => restartTheGame(context)),
+              textButton(
+                  widget.game.playSounds ? local.soundsOn : local.soundsOff,
+                  context, () {
+                playClickSound(widget.game);
+                widget.game.playSounds = !widget.game.playSounds;
+                if (widget.game.playSounds) {
+                  FlameAudio.bgm.play('Three-Red-Hearts-Out-of-Time.mp3',
+                      volume: widget.game.volume * 0.5);
+                } else {
+                  FlameAudio.bgm.stop();
+                }
+                setState(() {});
+              }),
+              textButton(
+                  widget.game.isMouseControl
+                      ? 'Controls: Mouse'
+                      : 'Controls: Keyboard',
+                  context, () {
+                playClickSound(widget.game);
+                widget.game.isMouseControl = !widget.game.isMouseControl;
+                setState(() {});
+              }),
               textButton(local.language, context, () async {
                 context.read<LocaleProvider>().switchLocale();
                 await playClickSound(widget.game);

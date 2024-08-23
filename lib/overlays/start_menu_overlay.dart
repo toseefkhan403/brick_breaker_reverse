@@ -27,17 +27,17 @@ class _StartMenuOverlayState extends State<StartMenuOverlay> {
         children: [
           const Spacer(),
           const Expanded(flex: 2, child: GameTitleWidget()),
-          textButton(local.play, context, () async {
+          textButton(local.play, context, () {
             /// start the game
             widget.game.overlays.remove(PlayState.startMenu.name);
             widget.game.overlays.add(PlayState.transition.name);
             widget.game.addColoredBricks = true;
             widget.game.startGame();
-            await playClickSound(widget.game);
+            playClickSound(widget.game);
           }),
           textButton(widget.game.playSounds ? local.soundsOn : local.soundsOff,
-              context, () async {
-            await playClickSound(widget.game);
+              context, () {
+            playClickSound(widget.game);
             widget.game.playSounds = !widget.game.playSounds;
             if (widget.game.playSounds) {
               FlameAudio.bgm.play('Three-Red-Hearts-Pixel-War-2.mp3',
@@ -47,15 +47,24 @@ class _StartMenuOverlayState extends State<StartMenuOverlay> {
             }
             setState(() {});
           }),
-          textButton(local.language, context, () async {
-            context.read<LocaleProvider>().switchLocale();
-            await playClickSound(widget.game);
+          textButton(
+              widget.game.isMouseControl
+                  ? local.controlsMouse
+                  : local.controlsKeyboard,
+              context, () {
+            playClickSound(widget.game);
+            widget.game.isMouseControl = !widget.game.isMouseControl;
+            setState(() {});
           }),
-          textButton(local.about, context, () async {
+          textButton(local.language, context, () {
+            context.read<LocaleProvider>().switchLocale();
+            playClickSound(widget.game);
+          }),
+          textButton(local.about, context, () {
             widget.game.overlays.remove(PlayState.startMenu.name);
             widget.game.overlays.add(PlayState.transition.name);
             widget.game.overlays.add(PlayState.about.name);
-            await playClickSound(widget.game);
+            playClickSound(widget.game);
           }),
           const Spacer(),
         ],

@@ -28,7 +28,8 @@ import 'package:toastification/toastification.dart';
 // bug fixes: fix ball and border hitboxes, hide above ceiling area, mouse follow controls, decrease difficulty - done
 // additional features: add paddleboard, add favicon and icon, high scores, tap to play screen for web - done
 // streaks high score - done
-// bugs: paddleboard and ball glitches, player out of bounds using mouse
+// bugs: paddleboard and ball glitches, player out of bounds using mouse - done
+// add control selection and check ball movement smoothness - done
 // readme, video, webOS config
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

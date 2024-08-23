@@ -23,7 +23,7 @@ class Ball extends SpriteAnimationGroupComponent
     super.size,
   });
 
-  static const double ballSpeed = 0.07;
+  final double ballSpeed = 0.07;
   final double moveSpeed;
   int horizontalDirection = 1;
   int verticalDirection = 1;

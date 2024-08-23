@@ -59,6 +59,8 @@ class Player extends SpriteAnimationGroupComponent
 
   @override
   bool onKeyEvent(RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
+    if (game.isMouseControl) return super.onKeyEvent(event, keysPressed);
+
     horizontalMovement = 0;
     final isLeftKeyPressed = keysPressed.contains(LogicalKeyboardKey.keyA) ||
         keysPressed.contains(LogicalKeyboardKey.arrowLeft);
@@ -272,8 +274,7 @@ class Player extends SpriteAnimationGroupComponent
 
   @override
   void onPointerMove(event) {
-    if (game.size.x < 1720 || game.size.y < 600) return;
-    if (current == PlayerState.anticipation) return;
+    if (!game.isMouseControl) return;
     if (game.playState != PlayState.playing) return;
 
     final mousePosition = event.devicePosition.x;
@@ -291,6 +292,8 @@ class Player extends SpriteAnimationGroupComponent
 
   @override
   void onTapDown(TapDownEvent event) {
+    if (!game.isMouseControl) return;
+
     startJump();
     super.onTapDown(event);
   }
