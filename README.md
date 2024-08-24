@@ -4,15 +4,30 @@ This project is our submission for the [LG webOS Hackathon 2024](https://webosha
 [Project Video](https://youtu.be/OzWRDKzxePI)
 
 ## Description
-Brick Breaker Reverse is a thrilling twist on the classic brick breaker game where the player embodies a brick seeking vengeance for its fallen friends. Built using Flutter and Flame, this game combines stunning retro-styled graphics with smooth, fast-paced gameplay and energetic music, providing a unique and engaging gaming experience.
+Brick Breaker Reverse is a thrilling twist on the classic brick breaker game where the player embodies a brick seeking payback for its fallen friends. Built using Flutter and Flame, this game combines stunning retro-styled graphics with smooth, fast-paced gameplay and energetic music, providing a unique and engaging gaming experience.
 
 ## Features
+
 - **Built with Flutter & Flame**: The game leverages the power of Flutter for cross-platform development and Flame for 2D game engine capabilities, ensuring a smooth and responsive gaming experience.
+
+![Screenshot 2024-08-25 013024](https://github.com/user-attachments/assets/66fcb43f-2700-4cd0-ae47-fd0dd8e1361b)
+
 - **Languages**: Available in English, Spanish, French, Japanese, and Korean.
+
+![Screenshot 2024-08-25 012417](https://github.com/user-attachments/assets/e5b8e569-dd0c-4486-b756-1a90abe5bced)
+
 - **Controls**: Play with either mouse or keyboard for a flexible gaming experience.
 - **Sound Options**: Toggle sounds on or off to suit your gaming environment.
+
+![Screenshot 2024-08-25 012443](https://github.com/user-attachments/assets/904e20d6-0123-4768-9156-249676b5fabf)
+
 - **Stunning Graphics**: Retro-inspired visuals with a modern touch, providing a unique and engaging aesthetic.
+
+![Screenshot 2024-08-25 012540](https://github.com/user-attachments/assets/b96a9d38-b684-48e6-a1ec-abae9bd86c02)
+
 - **Narrative Intro**: The game starts with a brief story setting the emotional backdrop for the player's journey.
+
+![Screenshot 2024-08-25 012432](https://github.com/user-attachments/assets/9d24557d-8d3a-49ac-ad97-41c4177500fc)
 
 ## How to Play
 - Launch the Game by tapping on the title screen
