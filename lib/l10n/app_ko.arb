@@ -27,5 +27,6 @@
   "highScore": "최고 점수",
   "pause": "일시 정지",
   "resume": "다시 시작",
+  "streak": "연속:",
   "highestStreak": "최고 연속 기록"
 }

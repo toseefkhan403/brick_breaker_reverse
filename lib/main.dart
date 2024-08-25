@@ -18,19 +18,6 @@ import 'package:flame/game.dart';
 import 'package:provider/provider.dart';
 import 'package:toastification/toastification.dart';
 
-// brick breaker reverse - deadline 26 Aug - 11 days left - lead with linux
-// 12-13 - music, setting up the canvas - done
-// 14-15-16 - add assets, actual gameplay - brick movements, ball randomizer, hitboxes, dodging and score - done
-// 17-18 - intro animation, transition animation and bg graphics, complete game flow - done
-// 19-20 - starting menu(stats, credits, settings), pause menu, animations, lose condition and restart screen
-// 21-22 - skins, finishing touches, responsiveness, rush mode(with a timer) and release
-// add death animation and overlay, restart menu - done
-// bug fixes: fix ball and border hitboxes, hide above ceiling area, mouse follow controls, decrease difficulty - done
-// additional features: add paddleboard, add favicon and icon, high scores, tap to play screen for web - done
-// streaks high score - done
-// bugs: paddleboard and ball glitches, player out of bounds using mouse - done
-// add control selection and check ball movement smoothness - done
-// readme, video, webOS config
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Flame.device.fullScreen();
@@ -38,8 +25,6 @@ void main() async {
   runApp(const MainApp());
 }
 
-// music choices - intro: penguins vs rabbits, pixel war 2
-// gameplay: out of time, box jump, go(no vocal), pixel war 1
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 

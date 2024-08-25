@@ -27,5 +27,6 @@
   "highScore": "High Score",
   "pause": "Pause",
   "resume": "Resume",
+  "streak": "Streak:",
   "highestStreak": "Highest Streak"
 }

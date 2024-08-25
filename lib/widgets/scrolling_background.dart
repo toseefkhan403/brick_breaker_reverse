@@ -5,6 +5,7 @@ import 'package:brick_breaker_reverse/providers/streak_provider.dart';
 import 'package:brick_breaker_reverse/widgets/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 import 'package:brick_breaker_reverse/providers/game_progress_provider.dart';
@@ -91,14 +92,14 @@ class _ScrollingBackgroundState extends State<ScrollingBackground>
                         _controller.value,
                         _image!,
                       ),
-                      child: _scoreWidget(provider.score),
+                      child: _scoreWidget(provider.score, local),
                     )),
               );
             },
           );
   }
 
-  Widget _scoreWidget(int score) {
+  Widget _scoreWidget(int score, AppLocalizations local) {
     return score == 0
         ? Container()
         : Center(
@@ -117,7 +118,7 @@ class _ScrollingBackgroundState extends State<ScrollingBackground>
                   final streak = context.watch<StreakProvider>().streak;
                   return DancingText(
                       child: Text(
-                    streak > 1 ? 'Streak: $streak' : '',
+                    streak > 1 ? '${local.streak} $streak' : '',
                     style: TextStyle(
                       fontSize: MediaQuery.of(context).size.width * 0.02,
                       fontFamily: 'Sabo-Regular',
