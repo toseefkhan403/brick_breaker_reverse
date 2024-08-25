@@ -10,13 +10,13 @@ Brick Breaker Reverse is a thrilling twist on the classic brick breaker game whe
 
 - **Built with Flutter & Flame**: The game leverages the power of Flutter for cross-platform development and Flame for 2D game engine capabilities, ensuring a smooth and responsive gaming experience.
 
-![Screenshot 2024-08-25 013024](https://github.com/user-attachments/assets/66fcb43f-2700-4cd0-ae47-fd0dd8e1361b)
+![Screenshot 2024-08-25 144917](https://github.com/user-attachments/assets/14f9c643-266e-4121-9b1f-3aee3043ac7a)
 
 - **Languages**: Available in English, Spanish, French, Japanese, and Korean.
 
-![Screenshot 2024-08-25 012417](https://github.com/user-attachments/assets/e5b8e569-dd0c-4486-b756-1a90abe5bced)
+![Screenshot 2024-08-25 145241](https://github.com/user-attachments/assets/3467a480-cdec-402e-a157-a5600658bc49)
 
-- **Controls**: Play with either mouse or keyboard for a flexible gaming experience.
+- **Controls**: Play with either pointer(mouse) or arrow keys for a flexible gaming experience.
 - **Sound Options**: Toggle sounds on or off to suit your gaming environment.
 
 ![Screenshot 2024-08-25 012443](https://github.com/user-attachments/assets/904e20d6-0123-4768-9156-249676b5fabf)
@@ -31,7 +31,7 @@ Brick Breaker Reverse is a thrilling twist on the classic brick breaker game whe
 
 ## How to Play
 - Launch the Game by tapping on the title screen
-- Choose Controls: Select between mouse or keyboard controls from the starting menu.
+- Choose Controls: Select between pointer or arrow keys from the starting menu.
 - Click on play and enjoy the brief narrative introduction.
 - Game is over if the ball touches you from above. Click on *Restart* to play again
 
@@ -42,15 +42,15 @@ Brick Breaker Reverse is a thrilling twist on the classic brick breaker game whe
 - **Energetic Experience**: Fast-paced gameplay combined with retro-styled graphics and energetic music for an immersive experience.
 
 ## Controls
-### Keyboard:
+### Arrow Keys/Keyboard:
 - Move Left: A or Left Arrow
 - Move Right: D or Right Arrow
 - Jump: Space or W or Up Arrow or Enter
 - Double Jump: Press the jump key twice.
-### Mouse:
-- Move Left/Right: Move the mouse left or right and the brick will follow the pointer.
-- Jump: Click the left mouse button.
-- Double Jump: Click the left mouse button twice.
+### Mouse/Pointer:
+- Move Left/Right: Move the mouse/pointer left or right and the brick will follow the pointer.
+- Jump: Tap the left mouse button or the OK button on the Magic Remote.
+- Double Jump: Tap the left mouse button or the OK button on the Magic Remote twice.
 
 ## Getting Started
 
