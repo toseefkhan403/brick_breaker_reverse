@@ -1,5 +1,5 @@
 name: brick_breaker_reverse
-description: A twist on the classic brick breaker game where the player embodies a brick seeking payback for its fallen friends
+description: A creative and fast-paced 2D pixel-art game built with Flutter and Flame
 publish_to: 'none'
 version: 0.1.0
 
@@ -8,23 +8,6 @@ environment:
   flutter: 3.13.9
 
 dependencies:
-  audioplayers: ^5.1.0
-  audioplayers_webos:
-   git:
-     url: git@github.com:webos-hackathon/flutter-webos-sdk.git
-     path: flutter-webos-plugins/packages/audioplayers
-     ref: main
-  path_provider: ^2.0.1
-  path_provider_webos:
-    git:
-      url: git@github.com:webos-hackathon/flutter-webos-sdk.git
-      path: flutter-webos-plugins/packages/path_provider_webos
-      ref: main
-  shared_preferences_webos:
-    git:
-      url: git@github.com:webos-hackathon/flutter-webos-sdk.git
-      path: flutter-webos-plugins/packages/shared_preferences
-      ref: main
   animated_text_kit: ^4.2.2
   auto_size_text: ^3.0.0
   flame: ^1.15.0
@@ -38,7 +21,7 @@ dependencies:
   intl: ^0.18.1
   provider: ^6.1.2
   toastification: ^2.0.0
-  # url_launcher: ^6.2.4
+  url_launcher: ^6.2.4
   shared_preferences: ^2.2.0
 
 dev_dependencies:

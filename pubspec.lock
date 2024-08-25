@@ -34,7 +34,7 @@ packages:
     source: hosted
     version: "2.11.0"
   audioplayers:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: audioplayers
       sha256: c05c6147124cd63e725e861335a8b4d57300b80e6e92cea7c145c739223bbaef
@@ -81,15 +81,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.0"
-  audioplayers_webos:
-    dependency: "direct main"
-    description:
-      path: "flutter-webos-plugins/packages/audioplayers"
-      ref: main
-      resolved-ref: "2216b245d72444fffcdad591d039b746d257c676"
-      url: "git@github.com:webos-hackathon/flutter-webos-sdk.git"
-    source: git
-    version: "1.0.3"
   audioplayers_windows:
     dependency: transitive
     description:
@@ -383,7 +374,7 @@ packages:
     source: hosted
     version: "1.0.1"
   path_provider:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: path_provider
       sha256: c9e7d3a4cd1410877472158bee69963a4579f78b68c65a2b7d40d1a7a88bb161
@@ -422,15 +413,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
-  path_provider_webos:
-    dependency: "direct main"
-    description:
-      path: "flutter-webos-plugins/packages/path_provider_webos"
-      ref: main
-      resolved-ref: "2216b245d72444fffcdad591d039b746d257c676"
-      url: "git@github.com:webos-hackathon/flutter-webos-sdk.git"
-    source: git
-    version: "1.0.1"
   path_provider_windows:
     dependency: transitive
     description:
@@ -527,15 +509,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.1"
-  shared_preferences_webos:
-    dependency: "direct main"
-    description:
-      path: "flutter-webos-plugins/packages/shared_preferences"
-      ref: main
-      resolved-ref: "2216b245d72444fffcdad591d039b746d257c676"
-      url: "git@github.com:webos-hackathon/flutter-webos-sdk.git"
-    source: git
-    version: "0.0.3"
   shared_preferences_windows:
     dependency: transitive
     description:
@@ -637,6 +610,70 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.2"
+  url_launcher:
+    dependency: "direct main"
+    description:
+      name: url_launcher
+      sha256: c512655380d241a337521703af62d2c122bf7b77a46ff7dd750092aa9433499c
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.2.4"
+  url_launcher_android:
+    dependency: transitive
+    description:
+      name: url_launcher_android
+      sha256: d4ed0711849dd8e33eb2dd69c25db0d0d3fdc37e0a62e629fe32f57a22db2745
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.3.0"
+  url_launcher_ios:
+    dependency: transitive
+    description:
+      name: url_launcher_ios
+      sha256: "75bb6fe3f60070407704282a2d295630cab232991eb52542b18347a8a941df03"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.2.4"
+  url_launcher_linux:
+    dependency: transitive
+    description:
+      name: url_launcher_linux
+      sha256: ab360eb661f8879369acac07b6bb3ff09d9471155357da8443fd5d3cf7363811
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.1"
+  url_launcher_macos:
+    dependency: transitive
+    description:
+      name: url_launcher_macos
+      sha256: "9a1a42d5d2d95400c795b2914c36fdcb525870c752569438e4ebb09a2b5d90de"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.2.0"
+  url_launcher_platform_interface:
+    dependency: transitive
+    description:
+      name: url_launcher_platform_interface
+      sha256: "552f8a1e663569be95a8190206a38187b531910283c3e982193e4f2733f01029"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.2"
+  url_launcher_web:
+    dependency: transitive
+    description:
+      name: url_launcher_web
+      sha256: "7fd2f55fe86cea2897b963e864dc01a7eb0719ecc65fcef4c1cc3d686d718bb2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.0"
+  url_launcher_windows:
+    dependency: transitive
+    description:
+      name: url_launcher_windows
+      sha256: ecf9725510600aa2bb6d7ddabe16357691b6d2805f66216a97d1b881e21beff7
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.1"
   uuid:
     dependency: transitive
     description:

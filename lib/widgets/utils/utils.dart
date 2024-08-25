@@ -5,7 +5,7 @@ import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:toastification/toastification.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-// import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 textButton(String title, BuildContext context, Function() onPressed,
     {Color color = Colors.black}) {
@@ -55,16 +55,16 @@ Widget gradientText(String text) => ShaderMask(
     );
 
 openLink(String url) async {
-  // if (url == '') return;
+  if (url == '') return;
 
-  // try {
-  //   Uri uri = Uri.parse(url);
-  //   if (await canLaunchUrl(uri)) {
-  //     await launchUrl(uri);
-  //   }
-  // } catch (e) {
-  //   debugPrint(e.toString());
-  // }
+  try {
+    Uri uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    }
+  } catch (e) {
+    debugPrint(e.toString());
+  }
 }
 
 void showLevelUpToast(int score, AppLocalizations local) {
